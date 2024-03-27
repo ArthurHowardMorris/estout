@@ -24,9 +24,20 @@ Installation from GitHub:
 
     . net install estout, replace from(https://raw.githubusercontent.com/benjann/estout/master/)
 
+Installation of this fork from github:
+
+    . net install estout, replace from(https://raw.githubusercontent.com/ArthurHowardMorris/estout/master/)
+
 ---
 
-Main changes:
+Changes on this fork:
+
+    27mar2024 
+    estout.ado 
+    - added option regexsubstitute() with syntax like substitute() but uses ustrregexra() to 
+      do the substitution.
+
+Main changes (Ben Jann's):
 
     09apr2023
     estout.ado (3.32); ettab.ado (2.1.2)

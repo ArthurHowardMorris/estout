@@ -32,6 +32,7 @@ program define estout, rclass
         DMarker(string) ///
         MSign(string) ///
         SUBstitute(string asis) ///
+        REGEXsubstitute(string asis) ///
         INTERACTion(string asis) ///
         TItle(string) ///
         note(string) ///
@@ -1976,6 +1977,7 @@ program define estout, rclass
 *Finish: copy tempfile to user file / type to screen
     file close `file'
     local rtfenc = ("`nortfencode'"=="") & (`hasrtf'!=0) & (c(stata_version)>=14)
+    local RX: word count `macval(regexsubstitute)'
     local S: word count `macval(substitute)'
     if `"`topfile'"'!="" {
         confirm file `"`topfile'"'
@@ -2013,6 +2015,14 @@ program define estout, rclass
             local to:  word `=`s'+1' of `macval(substitute)'
             if `"`macval(from)'`macval(to)'"'!="" {
                 local temp: subinstr local temp `"`macval(from)'"' `"`macval(to)'"', all
+            }
+        }
+        // TODO: add ability to use sub-groups when matching
+        forv r = 1(2)`RX' {
+            local from: word `r' of `macval(regexsubstitute)'
+            local to:  word `=`r'+1' of `macval(regexsubstitute)'
+            if `"`macval(from)'`macval(to)'"'!="" {
+                local temp = ustrregexra("`temp'","`from'","`to'")
             }
         }
         if `rtfenc' {

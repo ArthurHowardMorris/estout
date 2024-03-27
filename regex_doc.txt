@@ -1,0 +1,13 @@
+ustrregexra(s1,re,s2[,noc])
+       Description:  replaces all substrings within the Unicode string s1 that match re with s2 and returns the resulting string
+
+                     If noc is specified and not 0, a case-insensitive match is performed.  The function may return an empty string if an error occurs.
+
+                     ustrregexra("très près", "rès", "X") = "tX pX"
+                     ustrregexra("TRÈS près", "Rès", "X") = "TRÈS près"
+                     ustrregexra("TRÈS près", "Rès", "X", 1) = "TX pX"
+       Domain s1:    Unicode strings
+       Domain re:    Unicode regular expressions
+       Domain s2:    Unicode strings
+       Domain noc:   integers
+       Range:        Unicode strings

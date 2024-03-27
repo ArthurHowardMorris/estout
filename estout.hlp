@@ -1166,6 +1166,13 @@ label the table's left stub
 {p 8 8 2}
     For example, specify {cmd:substitute(_ \_)} to replace the underscore
     character (as in {cmd:_cons} or {cmd:F_p}) with it's LaTeX equivalent {cmd:\_}.
+    {p_end}
+{marker regexsubstitute}
+{p 4 8 2}
+    {cmd:regexsubstitute(}{it:subst_list}{cmd:)} specifies that the substitutions
+    specified in {it:subst_list} be applied to the estimates table after it has
+    been created. specify {it:subst_list} as a list of substitution pairs, where 
+    {it:from} is a regular expression using stata's specification (https://www.stata.com/support/faqs/data-management/regular-expressions/), and {it:to}. this substitution is made using {cmd:ustrregexra()}, and is currently case insensitive.
 
 {marker lab}
 {dlgtab:Labeling}
